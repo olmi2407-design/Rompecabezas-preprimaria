@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Juego de Figuras</title>
+
+<style>
+body{
+font-family:Arial;
+background:#b3ecff;
+text-align:center;
+margin:0;
+padding:20px;
+}
+h1{
+color:#ff4081;
+}
+.contenedor{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+.figura{
+font-size:60px;
+cursor:pointer;
+padding:15px;
+background:white;
+border-radius:15px;
+}
+.sombra{
+font-size:60px;
+padding:15px;
+border:3px dashed #555;
+border-radius:15px;
+width:90px;
+height:90px;
+line-height:90px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎮 Une las Figuras 🎮</h1>
+<p>Toca una figura y luego su lugar.</p>
+
+<div class="contenedor">
+<div class="figura" onclick="elegir('⭐')">⭐</div>
+<div class="figura" onclick="elegir('❤️')">❤️</div>
+<div class="figura" onclick="elegir('🔺')">🔺</div>
+</div>
+
+<br>
+
+<div class="contenedor">
+<div class="sombra" onclick="poner(this,'⭐')">☆</div>
+<div class="sombra" onclick="poner(this,'❤️')">♡</div>
+<div class="sombra" onclick="poner(this,'🔺')">△</div>
+</div>
+
+<h2 id="mensaje"></h2>
+
+<script>
+let seleccion="";
+let aciertos=0;
+
+function elegir(fig){
+seleccion=fig;
+}
+
+function poner(caja,respuesta){
+if(seleccion==respuesta && caja.innerHTML!=respuesta){
+caja.innerHTML=respuesta;
+aciertos++;
+if(aciertos==3){
+document.getElementById("mensaje").innerHTML="🎉 ¡Muy bien! ¡Ganaste! 🎉";
+}
+}
+}
+</script>
+
+</body>
+</html>
